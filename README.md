@@ -5,8 +5,7 @@ AspNetPerformanceMetrics
 
 使用说明
 1. 添加对AspNetPerformance项目的引用
-2. 注册PerformanceAttribute,如:
-	filters.Add(new MvcPerformanceAttribute());
+2. 注册PerformanceAttribute,如:`filters.Add(new MvcPerformanceAttribute())`,WebApi项目需要通过`GlobalConfiguration.Configure()`方法注册到`HttpConfiguration`对象的`Filters`属性中
 3. 添加Nuget包`Metrics.NET-net40`
 4. 编辑Global.asax.cs
 ```c#
@@ -29,5 +28,4 @@ AspNetPerformanceMetrics
 
 5. 配置Web.config文件.
 	1) 在appSettings节点下加`<add key="AspNetPerformance.EnablePerformanceMonitoring" value="true" />`,**true**为打开监控,**false**为关闭监控
-6. 运行程序,打开监控地址[http://localhost:1234/](http://localhost:1234/)
-
+6. 运行程序,打开监控地址查看: http://localhost:1234/
