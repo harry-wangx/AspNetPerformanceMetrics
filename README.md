@@ -9,7 +9,7 @@ AspNetPerformanceMetrics
 	filters.Add(new MvcPerformanceAttribute());
 3. 添加Nuget包`Metrics.NET-net40`
 4. 编辑Global.asax.cs
-...c#
+```c#
         protected void Application_Start()
         {
             ....
@@ -25,9 +25,9 @@ AspNetPerformanceMetrics
         {
             AspNetPerformance.PerformanceMetricFactory.CleanupPerformanceMetrics();
         }
-...
+```
 
 5. 配置Web.config文件.
-	1) 在appSettings节点下加`<add key="AspNetPerformance.EnablePerformanceMonitoring" value="true" />`,##true##为打开监控,##false##为关闭监控
-6. 运行程序,打开监控地址[http://localhost:1234/](http://localhost:1234/).
+	1) 在appSettings节点下加`<add key="AspNetPerformance.EnablePerformanceMonitoring" value="true" />`,**true**为打开监控,**false**为关闭监控
+6. 运行程序,打开监控地址[http://localhost:1234/](http://localhost:1234/)
 
