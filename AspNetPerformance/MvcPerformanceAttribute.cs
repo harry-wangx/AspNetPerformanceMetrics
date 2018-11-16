@@ -16,16 +16,16 @@ namespace AspNetPerformance
     /// </summary>    
     public class MvcPerformanceAttribute : ActionFilterAttribute
     {
+        //Constant to identify MVC Action Types (used in the instance name)
+        private readonly String ACTION_TYPE = "MVC";
 
-        public MvcPerformanceAttribute()
-        {
-        }
-
-        /// <summary>
-        /// Constant to identify MVC Action Types (used in the instance name)
-        /// </summary>
-        public const String ACTION_TYPE = "MVC";
-
+        //public MvcPerformanceAttribute(string actionType)
+        //{
+        //    if (!string.IsNullOrEmpty(actionType))
+        //    {
+        //        this.ACTION_TYPE = actionType;
+        //    }
+        //}
 
         /// <summary>
         /// Method called before the action method starts processing
