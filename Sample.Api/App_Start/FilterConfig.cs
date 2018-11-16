@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using AspNetPerformance;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Sample.Api

@@ -16,16 +16,16 @@ namespace AspNetPerformance
     /// </summary>    
     public class MvcPerformanceAttribute : ActionFilterAttribute
     {
-        //Constant to identify MVC Action Types (used in the instance name)
-        private readonly String ACTION_TYPE = "MVC";
 
-        //public MvcPerformanceAttribute(string actionType)
-        //{
-        //    if (!string.IsNullOrEmpty(actionType))
-        //    {
-        //        this.ACTION_TYPE = actionType;
-        //    }
-        //}
+        public MvcPerformanceAttribute()
+        {
+        }
+
+        /// <summary>
+        /// Constant to identify MVC Action Types (used in the instance name)
+        /// </summary>
+        public const String ACTION_TYPE = "MVC";
+
 
         /// <summary>
         /// Method called before the action method starts processing
@@ -34,11 +34,11 @@ namespace AspNetPerformance
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             // First thing is to check if performance is enabled globally.  If not, return
-            if ( ConfigInfo.Value.PerformanceEnabled == false)
+            if (ConfigInfo.Value.PerformanceEnabled == false)
             {
                 return;
             }
-            
+
             // Second thing, check if performance tracking has been turned off for this action
             // If the DoNotTrackAttribute is present, then return
             ActionDescriptor actionDescriptor = filterContext.ActionDescriptor;
@@ -54,11 +54,11 @@ namespace AspNetPerformance
 
             // PerformanceTracker is the object that tracks performance and is attached to the request
             PerformanceTracker tracker = new PerformanceTracker(info);
-           
+
             // Store this on the request
             String contextKey = this.GetUniqueContextKey(filterContext.ActionDescriptor.UniqueId);
             HttpContext.Current.Items.Add(contextKey, tracker);
-                        
+
             // Process the action start - this is what starts the timer and increments any
             // required counters before the action executes
             tracker.ProcessActionStart();
@@ -117,7 +117,7 @@ namespace AspNetPerformance
             int contentLength = HttpContext.Current.Request.ContentLength;
 
             ActionInfo info = new ActionInfo(processId, ACTION_TYPE,
-                controllerName, actionName, httpMethod, parameterString,contentLength);
+                controllerName, actionName, httpMethod, parameterString, contentLength);
 
             return info;
         }

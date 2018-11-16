@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AspNetPerformance;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Filters;
 
 namespace Sample.Api
 {
@@ -19,6 +21,7 @@ namespace Sample.Api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Filters.Add(new WebApiPerformanceAttribute());
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AspNetPerformance;
+using Metrics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,19 @@ namespace Sample.Mvc
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
+            Metric.Config
+               .WithHttpEndpoint("http://localhost:1234/")
+               .WithAllCounters()
+               .WithReporting(config => config.WithCSVReports(@"c:\temp\csv", TimeSpan.FromSeconds(10))
+               .WithTextFileReport(@"C:\temp\reports\metrics.txt", TimeSpan.FromSeconds(10)));
+        }
+
+        protected void Application_End()
+        {
+            //InstanceNameRegistry.RemovePerformanceCounterInstances();
+            PerformanceMetricFactory.CleanupPerformanceMetrics();
         }
     }
 }
