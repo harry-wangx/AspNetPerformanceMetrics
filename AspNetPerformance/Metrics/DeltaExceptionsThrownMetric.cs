@@ -40,7 +40,7 @@ namespace AspNetPerformance.Metrics
         /// If exceptionThrown is true, then the Total Exceptions Thrown counter will be 
         /// incremented by 1
         /// </remarks>
-        public override void OnActionComplete(long elapsedTicks, bool exceptionThrown)
+        public override void OnActionComplete(long milliseconds, bool exceptionThrown)
         {
             if (exceptionThrown)
                 this.deltaExceptionsThrownCounter.Mark();

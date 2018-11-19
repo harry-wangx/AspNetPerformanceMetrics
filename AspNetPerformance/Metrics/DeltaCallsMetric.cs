@@ -28,7 +28,7 @@ namespace AspNetPerformance.Metrics
         /// <summary>
         /// Constant defining the name of this counter
         /// </summary>
-        public const String COUNTER_NAME = "Delta Calls";
+        public const String COUNTER_NAME = "累计请求次数";
 
 
         /// <summary>
@@ -42,10 +42,10 @@ namespace AspNetPerformance.Metrics
         /// </summary>
         /// <remarks>
         /// This method increments the "Delta Calls" counter by 1.  It does not use the
-        /// elapsedTicks that is passed in
+        /// milliseconds that is passed in
         /// </remarks>
-        /// <param name="elapsedTicks">A long of the ticks it took the action to complete (not used)</param>
-        public override void OnActionComplete(long elapsedTicks, bool exceptionThrown)
+        /// <param name="milliseconds">A long of the ticks it took the action to complete (not used)</param>
+        public override void OnActionComplete(long milliseconds, bool exceptionThrown)
         {
             this.deltaCallsCounter.Increment();
         }

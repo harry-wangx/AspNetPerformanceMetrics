@@ -24,7 +24,7 @@ namespace AspNetPerformance.Metrics
         /// <summary>
         /// Constant defining the name of this counter
         /// </summary>
-        public const String COUNTER_NAME = "ActiveRequests";
+        public const String COUNTER_NAME = "当前请求数量";
 
 
         private Counter callsInProgressCounter;
@@ -47,7 +47,7 @@ namespace AspNetPerformance.Metrics
         /// <remarks>
         /// This method decrements the Calls in Progress counter by 1
         /// </remarks>
-        public override void OnActionComplete(long elapsedTicks, bool exceptionThrown)
+        public override void OnActionComplete(long milliseconds, bool exceptionThrown)
         {
             this.callsInProgressCounter.Decrement();
         }

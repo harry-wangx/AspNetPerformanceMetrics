@@ -85,7 +85,7 @@ namespace AspNetPerformance
                 {
                     foreach (PerformanceMetricBase m in this.performanceMetrics)
                     {
-                        m.OnActionComplete(this.stopwatch.ElapsedTicks, unhandledExceptionFlag);
+                        m.OnActionComplete(this.stopwatch.ElapsedMilliseconds, unhandledExceptionFlag);
                     }
                 });
             }

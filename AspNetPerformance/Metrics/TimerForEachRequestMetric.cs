@@ -39,10 +39,10 @@ namespace AspNetPerformance.Metrics
         /// <remarks>
         /// This method increments the Average Time per Call counter by the number of ticks
         /// </remarks>
-        /// <param name="elapsedTicks">A long of the number of ticks it took to complete the action</param>
-        public override void OnActionComplete(long elapsedTicks, bool exceptionThrown)
+        /// <param name="milliseconds">A long of the number of ticks it took to complete the action</param>
+        public override void OnActionComplete(long milliseconds, bool exceptionThrown)
         {
-            averageTimeCounter.Record(elapsedTicks, TimeUnit.Nanoseconds);
+            averageTimeCounter.Record(milliseconds, TimeUnit.Milliseconds);
         }
 
         /// <summary>
